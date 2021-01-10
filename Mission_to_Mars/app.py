@@ -10,13 +10,13 @@ app = Flask(__name__)
 mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 #Route
-@app.route("/")
+@app.route('/')
 def index():
     mars_stuff = mongo.db.mars_stuff.find_one()
-    return render_template("index.html", mars_stuff=mars_stuff)
+    return render_template('index.html', mars_stuff=mars_stuff)
 
 #Scrape Route
-@app.route("/scrape")
+@app.route('/scrape')
 def scraper():
     mars_stuff = mongo.db.mars_stuff
     mars_data = scrape_mars.scrape()
